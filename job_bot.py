@@ -11,12 +11,12 @@ options.headless = True
 driver = webdriver.Firefox(options=options)
 
 ## an example job site
-amz = 'https://www.amazon.jobs/en/locations/london'
+amz = 'https://www.amazon.jobs/en/locations/london?category=software-development'
 target_btn = 'Sort by: Most relevant'
 
 ## send GET request
 driver.get(amz)
-driver.page_source
+#driver.page_source
 
 
 ## find "Sort by: Most relevant" button => then find "Most recent" anchor tag => then click it
@@ -28,6 +28,7 @@ sort_btns = driver.find_elements_by_xpath("//*[contains(text(), target_btn)]")
 for btn in sort_btns:
 	if btn.text == target_btn:
 		btn.click()
+		break
 
 
 ## get the button with this text
